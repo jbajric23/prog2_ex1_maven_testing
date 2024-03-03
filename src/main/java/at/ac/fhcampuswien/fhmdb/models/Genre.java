@@ -1,6 +1,6 @@
 package at.ac.fhcampuswien.fhmdb.models;
 
-public enum Genres {
+public enum Genre {
 
     ACTION("Action"),
     ADVENTURE("Adventure"),
@@ -25,7 +25,7 @@ public enum Genres {
 
     private final String genre;
 
-    Genres(String genre) {
+    Genre(String genre) {
         this.genre = genre;
     }
 
