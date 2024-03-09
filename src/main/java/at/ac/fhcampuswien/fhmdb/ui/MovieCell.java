@@ -30,6 +30,7 @@ public class MovieCell extends ListCell<Movie> {
                             ? movie.getDescription()
                             : "No description available"
             );
+            // set the genres text in the ui
             genres.setText(
                     movie.getGenres() != null
                             ? movie.getGenres().toString()
@@ -39,6 +40,7 @@ public class MovieCell extends ListCell<Movie> {
             // color scheme
             title.getStyleClass().add("text-yellow");
             detail.getStyleClass().add("text-white");
+
             // Make the genres text display in white
             genres.getStyleClass().add("text-white");
             // Remove the brackets from the genres text

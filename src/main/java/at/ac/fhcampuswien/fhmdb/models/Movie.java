@@ -1,11 +1,8 @@
 package at.ac.fhcampuswien.fhmdb.models;
 
-
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -38,32 +35,37 @@ public class Movie {
     public static List<Movie> initializeMovies(){
 
         List<Movie> movies = new ArrayList<>();
+        // Read the resource file with the movie data
         try (BufferedReader br = new BufferedReader(new FileReader("src\\main\\resources\\at\\ac\\fhcampuswien\\fhmdb\\DummyMovies.txt")))
         {
             String line;
+            // True as long as there are lines to read
             while ((line = br.readLine()) != null) {
-                String[] parts = line.split(";"); // Assuming ';' separates different parts of movie data
+                // Assuming ";" separates parts of the movie data
+                String[] parts = line.split(";");
                 String title = parts[0];
                 String description = parts[1];
-                String[] genreNames = parts[2].split(","); // Assuming ',' separates different genres
+                // "," splits different genres
+                String[] genreNames = parts[2].split(",");
                 List<Genre> genres = new ArrayList<>();
+                // Convert genre names to Genre enum values with a for loop
                 for (String genreName : genreNames) {
                     Genre genre = Genre.valueOf(genreName);
                     genres.add(genre);
                 }
+                // Add the object movie to the list
                 movies.add(new Movie(title, description, genres));
             }
         } catch (FileNotFoundException e) {
+            // Catch block if file not found
             e.printStackTrace();
-            // Handle file not found exception
         } catch (IOException e) {
+            // Catch block if there is an error reading the file
             e.printStackTrace();
-            // Handle file reading exception
         } catch (Exception e) {
+            // Catch block if there occurs another error
             e.printStackTrace();
-            // Handle other exceptions
         }
-
         return movies;
     }
 }
