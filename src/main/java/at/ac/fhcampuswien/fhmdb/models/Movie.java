@@ -32,11 +32,11 @@ public class Movie {
         return genres;
     }
 
-    public static List<Movie> initializeMovies(){
+    public static List<Movie> initializeMovies(FileReader fileReader){
 
         List<Movie> movies = new ArrayList<>();
         // Read the resource file with the movie data
-        try (BufferedReader br = new BufferedReader(new FileReader("src\\main\\resources\\at\\ac\\fhcampuswien\\fhmdb\\DummyMovies.txt")))
+        try (BufferedReader br = new BufferedReader(fileReader))
         {
             String line;
             // True as long as there are lines to read
@@ -56,9 +56,6 @@ public class Movie {
                 // Add the object movie to the list
                 movies.add(new Movie(title, description, genres));
             }
-        } catch (FileNotFoundException e) {
-            // Catch block if file not found
-            e.printStackTrace();
         } catch (IOException e) {
             // Catch block if there is an error reading the file
             e.printStackTrace();
