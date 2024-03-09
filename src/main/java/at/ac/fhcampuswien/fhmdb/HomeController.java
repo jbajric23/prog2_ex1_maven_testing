@@ -12,6 +12,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -32,9 +34,20 @@ public class HomeController implements Initializable {
     @FXML
     public JFXButton sortBtn;
 
-    public List<Movie> allMovies = Movie.initializeMovies();
+    public List<Movie> allMovies;
+    // Call initializeMovies method with a FileReader object as parameter for better testing possibilities
+    {
+        try {
+            allMovies = Movie.initializeMovies(new FileReader("src\\main\\resources\\at\\ac\\fhcampuswien\\fhmdb\\DummyMovies.txt"));
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     private final ObservableList<Movie> observableMovies = FXCollections.observableArrayList();   // automatically updates corresponding UI elements when underlying data changes
+
+    public HomeController() throws FileNotFoundException {
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
