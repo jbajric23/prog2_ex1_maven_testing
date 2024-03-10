@@ -3,6 +3,7 @@ package at.ac.fhcampuswien.fhmdb.models;
 import org.junit.jupiter.api.Test;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
 import java.io.FileReader;
 
@@ -11,8 +12,8 @@ import static org.junit.jupiter.api.Assertions.*;
 class MovieTest {
 
     FileReader productionMovieData = new FileReader ("src\\main\\resources\\at\\ac\\fhcampuswien\\fhmdb\\DummyMovies.txt");
-    FileReader testMovieData = new FileReader ("src\\main\\test\\at\\ac\\fhcampuswien\\fhmdb\\models\\testingdata\\DummyMoviesTest.txt");
 
+    FileReader testMovieData = new FileReader ("src\\main\\test\\at\\ac\\fhcampuswien\\fhmdb\\models\\testingdata\\DummyMoviesTest.txt");
     MovieTest() throws FileNotFoundException {
     }
 
@@ -66,5 +67,19 @@ class MovieTest {
 
         // Then
         assertEquals(expectedGenres, actualGenres);
+    }
+
+    @Test
+    void initializeMovies_throws_IllegalArgumentException_when_file_not_correct() throws IllegalArgumentException {
+        // Given
+        // Already given in testMovieData FileReader object
+
+        // Then + When
+        assertThrows(IllegalArgumentException.class, () -> Movie.initializeMovies(testMovieData));
+    }
+    @Test
+    void initializeMovies_throws_IOException_when_file_not_found() {
+        // Given + Then + When
+        assertThrows(IOException.class, () -> Movie.initializeMovies(new FileReader("errorFile.txt")));
     }
 }
