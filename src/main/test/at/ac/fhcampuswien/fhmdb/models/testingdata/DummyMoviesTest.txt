@@ -1,7 +1,7 @@
 The Shawshank Redemption; Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.;ACTION,DRAMA
 The Godfather; The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.;ACTION,DRAMA
-The Dark Knight; When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.;ACTION,DRAMA
-Forrest Gump; The presidencies of Kennedy and Johnson, the Vietnam War, the Watergate scandal and other historical events unfold from the perspective of an Alabama man with an IQ of 75, whose only desire is to be reunited with his childhood sweetheart.;DRAMA,ROMANCE
+The Dark Knight; When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.;ACTION,DRAMA,ERROR
+Forrest Gump;The presidencies of Kennedy and Johnson, the Vietnam War, the Watergate scandal and other historical events unfold from the perspective of an Alabama man with an IQ of 75, whose only desire is to be reunited with his childhood sweetheart.;DRAMA,ROMANCE
 Fight Club; An insomniac office worker and a devil-may-care soap maker form an underground fight club that evolves into much more.;DRAMA,THRILLER
 Inception; A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.;ACTION,DRAMA
 The Matrix; A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.;ACTION,SCIENCE_FICTION
@@ -13,3 +13,4 @@ The Silence of the Lambs; A young FBI cadet must receive the help of an incarcer
 Goodfellas; The story of Henry Hill and his life in the mob, covering his relationship with his wife Karen Hill and his mob partners Jimmy Conway and Tommy DeVito in the Italian-American crime syndicate.;BIOGRAPHY,CRIME
 The Green Mile; The lives of guards on Death Row are affected by one of their charges: a black man accused of child murder and rape, yet who has a mysterious gift.;DRAMA,CRIME
 The Godfather: Part II; The early life and career of Vito Corleone in 1920s New York City is portrayed, while his son, Michael, expands and tightens his grip on his crime syndicate stretching from Lake Tahoe, Nevada to pre-revolution 1958 Cuba.;DRAMA,THRILLER
+
