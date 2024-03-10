@@ -1,6 +1,5 @@
 package at.ac.fhcampuswien.fhmdb.models;
 
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.BufferedReader;
@@ -56,9 +55,12 @@ public class Movie {
                 // Add the object movie to the list
                 movies.add(new Movie(title, description, genres));
             }
+        } catch (IllegalArgumentException e) {
+            // Catch block if illegal argument is passed to Genre.valueOf
+            throw new IllegalArgumentException("Genre not found in enum");
         } catch (IOException e) {
             // Catch block if there is an error reading the file
-            e.printStackTrace();
+            throw new RuntimeException("Error reading file");
         } catch (Exception e) {
             // Catch block if there occurs another error
             e.printStackTrace();
