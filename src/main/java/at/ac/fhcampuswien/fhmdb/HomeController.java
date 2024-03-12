@@ -79,12 +79,7 @@ public class HomeController implements Initializable {
 
 
     }
-    public List<Movie> filterMovies(String query, Genre genre) {
-        return observableMovies.stream()
-                .filter(movie -> (query == null || movie.getTitle().toLowerCase().contains(query.toLowerCase()) || movie.getDescription().toLowerCase().contains(query.toLowerCase()))
-                        && (genre == null || movie.getGenres().contains(genre)))
-                .collect(Collectors.toList());
-    }
+
     public void sortMovies(boolean ascending) {
         Comparator<Movie> comparator = Comparator.comparing(Movie::getTitle);
         if (!ascending) {
