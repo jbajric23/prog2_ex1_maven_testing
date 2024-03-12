@@ -15,8 +15,10 @@ import javafx.scene.control.TextField;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.net.URL;
+import java.util.Comparator;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 public class HomeController implements Initializable {
     @FXML
@@ -38,13 +40,13 @@ public class HomeController implements Initializable {
     // Call initializeMovies method with a FileReader object as parameter for better testing possibilities
     {
         try {
-            allMovies = Movie.initializeMovies(new FileReader("src\\main\\resources\\at\\ac\\fhcampuswien\\fhmdb\\DummyMovies.txt"));
+            allMovies = Movie.initializeMovies(new FileReader("src/main/resources/at/ac/fhcampuswien/fhmdb/DummyMovies.txt"));
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
 
-    private final ObservableList<Movie> observableMovies = FXCollections.observableArrayList();   // automatically updates corresponding UI elements when underlying data changes
+    public final ObservableList<Movie> observableMovies = FXCollections.observableArrayList();   // automatically updates corresponding UI elements when underlying data changes
 
     public HomeController() throws FileNotFoundException {
     }
@@ -67,14 +69,27 @@ public class HomeController implements Initializable {
         // Sort button example:
         sortBtn.setOnAction(actionEvent -> {
             if(sortBtn.getText().equals("Sort (asc)")) {
-                // TODO sort observableMovies ascending
+                sortMovies(true);
                 sortBtn.setText("Sort (desc)");
             } else {
-                // TODO sort observableMovies descending
+                sortMovies(false);
                 sortBtn.setText("Sort (asc)");
             }
         });
 
 
+    }
+    public List<Movie> filterMovies(String query, Genre genre) {
+        return observableMovies.stream()
+                .filter(movie -> (query == null || movie.getTitle().toLowerCase().contains(query.toLowerCase()) || movie.getDescription().toLowerCase().contains(query.toLowerCase()))
+                        && (genre == null || movie.getGenres().contains(genre)))
+                .collect(Collectors.toList());
+    }
+    public void sortMovies(boolean ascending) {
+        Comparator<Movie> comparator = Comparator.comparing(Movie::getTitle);
+        if (!ascending) {
+            comparator = comparator.reversed();
+        }
+        FXCollections.sort(observableMovies, comparator);
     }
 }
