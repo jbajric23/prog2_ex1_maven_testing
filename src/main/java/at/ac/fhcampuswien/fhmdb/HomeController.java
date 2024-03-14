@@ -17,6 +17,7 @@ import java.io.FileReader;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 public class HomeController implements Initializable {
     @FXML
@@ -44,9 +45,21 @@ public class HomeController implements Initializable {
         }
     }
 
+    public List<Movie> filterMovies(String query, Genre genre) {
+        return allMovies.stream()
+                .filter(movie -> (query == null || movie.getTitle().toLowerCase().contains(query.toLowerCase()) ||
+                        movie.getDescription().toLowerCase().contains(query.toLowerCase())) &&
+                        (genre == null || movie.getGenres().contains(genre)))
+                .collect(Collectors.toList());
+    }
+
     private final ObservableList<Movie> observableMovies = FXCollections.observableArrayList();   // automatically updates corresponding UI elements when underlying data changes
 
     public HomeController() throws FileNotFoundException {
+    }
+
+    public void setAllMovies(List<Movie> allMovies) {
+            this.allMovies = allMovies;
     }
 
     @Override
@@ -63,6 +76,14 @@ public class HomeController implements Initializable {
         genreComboBox.getItems().addAll(Genre.values());
 
         // TODO add event handlers to buttons and call the regarding methods
+
+        searchBtn.setOnAction(actionEvent -> {
+            String query = searchField.getText();
+            Genre genre = (Genre) genreComboBox.getSelectionModel().getSelectedItem();
+            List<Movie> filteredMovies = filterMovies(query, genre);
+            observableMovies.clear();
+            observableMovies.addAll(filteredMovies);
+        });
 
         // Sort button example:
         sortBtn.setOnAction(actionEvent -> {
