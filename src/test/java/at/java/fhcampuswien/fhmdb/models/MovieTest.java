@@ -1,5 +1,7 @@
-package at.ac.fhcampuswien.fhmdb.models;
+package at.java.fhcampuswien.fhmdb.models;
 
+import at.ac.fhcampuswien.fhmdb.models.Genre;
+import at.ac.fhcampuswien.fhmdb.models.Movie;
 import org.junit.jupiter.api.Test;
 
 import java.io.FileNotFoundException;
@@ -9,11 +11,11 @@ import java.io.FileReader;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class MovieTest {
+public class MovieTest {
 
     FileReader productionMovieData = new FileReader ("src/main/resources/at/ac/fhcampuswien/fhmdb/DummyMovies.txt");
 
-    FileReader testMovieData = new FileReader ("src/main/test/at/ac/fhcampuswien/fhmdb/models/testingdata/DummyMoviesTest.txt");
+    FileReader testMovieData = new FileReader ("src/test/resources/at/ac/fhcampuswien/fhmdb/testingdata/DummyMoviesTest.txt");
     MovieTest() throws FileNotFoundException {
     }
 

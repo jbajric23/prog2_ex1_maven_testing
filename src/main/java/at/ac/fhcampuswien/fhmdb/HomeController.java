@@ -36,6 +36,9 @@ public class HomeController implements Initializable {
     @FXML
     public JFXButton sortBtn;
 
+    @FXML
+    public JFXButton resetFilterBtn;
+
     public List<Movie> allMovies;
     // Call initializeMovies method with a FileReader object as parameter for better testing possibilities
     {
@@ -99,6 +102,13 @@ public class HomeController implements Initializable {
             } else {
                 sortMovies(false);
             }
+        });
+
+        resetFilterBtn.setOnAction(actionEvent -> {
+            observableMovies.clear();
+            observableMovies.addAll(allMovies);
+
+            searchField.clear();
         });
 
         // Sort button example:

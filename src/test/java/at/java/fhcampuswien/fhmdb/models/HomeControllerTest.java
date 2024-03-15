@@ -1,6 +1,8 @@
-package at.ac.fhcampuswien.fhmdb.models;
+package at.java.fhcampuswien.fhmdb.models;
 
 import at.ac.fhcampuswien.fhmdb.HomeController;
+import at.ac.fhcampuswien.fhmdb.models.Genre;
+import at.ac.fhcampuswien.fhmdb.models.Movie;
 import org.junit.Test;
 
 import java.io.FileNotFoundException;
@@ -13,7 +15,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 public class HomeControllerTest {
-    // TODO implement unittests for the HomeController class -> TDD
 
     @Test
     public void filterMovies() throws FileNotFoundException {
