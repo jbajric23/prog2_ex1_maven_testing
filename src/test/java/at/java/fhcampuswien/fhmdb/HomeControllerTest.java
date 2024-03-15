@@ -16,6 +16,26 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class HomeControllerTest {
 
+
+
+    @Test
+    public void testSortMoviesAscending() throws FileNotFoundException {
+        //create dummy movies
+        Movie movie1 = new Movie("B Movie", "Description", new ArrayList<>());
+        Movie movie2 = new Movie("A Movie", "Description", new ArrayList<>());
+
+        //add movies to HomeController
+        HomeController homeController = new HomeController();
+        homeController.observableMovies.addAll(movie1, movie2);
+
+        //sorting of movies
+        homeController.sortMovies(true);
+
+        //correctly sorted?
+        assertEquals("A Movie", homeController.observableMovies.get(0).getTitle());
+        assertEquals("B Movie", homeController.observableMovies.get(1).getTitle());
+    }
+
     @Test
     public void filterMovies() throws FileNotFoundException {
         // Create a list of movies
@@ -34,24 +54,6 @@ public class HomeControllerTest {
         // Check if the filtered list contains the correct movies
         assertEquals(1, filteredMovies.size());
         assertEquals("Movie 1", filteredMovies.get(0).getTitle());
-    }
-
-    @Test
-    public void testSortMoviesAscending() throws FileNotFoundException {
-        //create dummy movies
-        Movie movie1 = new Movie("B Movie", "Description", new ArrayList<>());
-        Movie movie2 = new Movie("A Movie", "Description", new ArrayList<>());
-
-        //add movies to HomeController
-        HomeController homeController = new HomeController();
-        homeController.observableMovies.addAll(movie1, movie2);
-
-        //sorting of movies
-        homeController.sortMovies(true);
-
-        //correctly sorted?
-        assertEquals("A Movie", homeController.observableMovies.get(0).getTitle());
-        assertEquals("B Movie", homeController.observableMovies.get(1).getTitle());
     }
 
     @Test
