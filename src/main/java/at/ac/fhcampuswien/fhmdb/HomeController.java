@@ -67,6 +67,8 @@ public class HomeController implements Initializable {
             this.allMovies = allMovies;
     }
 
+
+    // sort movies via comparison of titles
     public void sortMovies(boolean ascending) {
         Comparator<Movie> comparator = Comparator.comparing(Movie::getTitle);
         if (!ascending) {
@@ -98,6 +100,7 @@ public class HomeController implements Initializable {
             observableMovies.clear();
             observableMovies.addAll(filteredMovies);
 
+            //possibility to sort a filtered selection of the movies
             if(sortBtn.getText().equals("Sort (asc)")) {
                 sortMovies(true);
             } else {
@@ -112,7 +115,7 @@ public class HomeController implements Initializable {
             searchField.clear();
         });
 
-        // Sort button example:
+        // Sort button for listing the movies in alphabetical order; either descending or ascending
         sortBtn.setOnAction(actionEvent -> {
             if(sortBtn.getText().equals("Sort (asc)")) {
                 sortMovies(true);
