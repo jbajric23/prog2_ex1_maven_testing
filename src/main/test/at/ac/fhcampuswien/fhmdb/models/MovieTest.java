@@ -11,9 +11,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class MovieTest {
 
-    FileReader productionMovieData = new FileReader ("src\\main\\resources\\at\\ac\\fhcampuswien\\fhmdb\\DummyMovies.txt");
+    FileReader productionMovieData = new FileReader ("src/main/resources/at/ac/fhcampuswien/fhmdb/DummyMovies.txt");
 
-    FileReader testMovieData = new FileReader ("src\\main\\test\\at\\ac\\fhcampuswien\\fhmdb\\models\\testingdata\\DummyMoviesTest.txt");
+    FileReader testMovieData = new FileReader ("src/main/test/at/ac/fhcampuswien/fhmdb/models/testingdata/DummyMoviesTest.txt");
     MovieTest() throws FileNotFoundException {
     }
 
